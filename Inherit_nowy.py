@@ -32,16 +32,26 @@ def create_contacts(is_business, amount):
     company_position = fake.job()
     company_name = fake.company()
     company_number = fake.msisdn()
+    
 
     list_of_contacts = []
     for i in range(amount):
         if is_business:
-          bcard= BusinessContact()
+          card = BusinessContact(name, phone, email, company_position, company_name,company_number)
         else:
-          pcard=BaseContact()
-    
+          card = BaseContact(name, phone, email)
+        list_of_contacts.append(card)
+
     return list_of_contacts
 
-if __name__ == "__main__":
-    list_of_contacts = create_contacts(1,10)
-    print(list_of_contacts)
+for i in range (8):
+   create_contacts(1,1)
+   created_contacts = create_contacts(1,1)
+   for card in created_contacts:
+      card.contact()
+
+for i in range (10):
+    create_contacts(0,1)
+    created_contacts = create_contacts(0,1)
+    for card in created_contacts:
+        card.contact()
